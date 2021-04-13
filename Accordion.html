@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <title>Accordion</title>
+      <style>
+      	*{
+      		margin:0;
+      		padding:0;
+      		box-sizing:border-box;
+      	}
+      	body{
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		height:100vh;
+      	}
+      	.container{
+      		width:300px;
+      		box-shadow: 0 0 5px #ccc;
+      		padding:20px;
+      	}
+      	.items .btn{
+      		font-family:sans-serif;
+      		font-size:20px;
+      		font-weight:800;
+      		text-transform:capitalize;
+      		text-align:left;
+      		border:none;
+      		background:none;
+      		outline:none;
+      		background:#ccc;
+      		padding:10px 30px;
+      		position:relative;
+      		width:100%;
+      		height:auto;
+      		border-radius:5px;
+      		margin-bottom:10px;
+      		cursor:pointer;
+      		transition:1s ease;
+      	}
+      	.items .btn:hover,
+      	.items .btn.active{
+      		background:#909090;
+      		color:#fff;
+      	}
+      	.items .btn:after,
+      	.items .btn:before{
+      		position:absolute;
+      		content:"";
+      		width:10px;
+      		height:2px;
+      		background:#000;
+      		right:10%;
+      		top:50%;
+      		transform:translateY(-50%);
+      		transition:1s;
+      	}
+      	.items .btn:before{
+      		transform:translateY(-50%) rotate(90deg);
+      	}
+      	.items .btn:hover:after,
+      	.items .btn:hover:before{
+      		background:#fff;
+      	}
+      	.items .btn.active:after{
+      		transform:translateY(-50%) rotate(-90deg);
+      		opacity:0;
+      	}
+      	.items .btn.active:before{
+      		transform:translateY(-50%) rotate(0deg);
+      		background:#fff;
+      	}
+      	.items .content{
+      		box-shadow:0 0 5px #ccc;
+      		border-radius:5px;
+      		margin-bottom:10px;
+      		padding:0 10px;
+      		max-height:0;
+      		overflow:hidden;
+      		transition:1s max-height;
+      	}
+      	.items .content.show{
+      		max-height:150px;
+      	}
+      	.content p{
+      		text-align:justify;
+      		font-family:poppins;
+      		font-size:15px;
+      		font-weight:400;
+      		padding:10px;
+      	}
+      </style>
+   </head>
+   <body>
+   		<div class="container">
+   			<div class="items">
+   				<button class="btn">Accordion Button</button>
+   				<div class="content">
+   					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+      			 desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+   				</div>
+   			</div>
+   			
+   			<div class="items">
+   				<button class="btn">Accordion Button</button>
+   				<div class="content">
+   					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+      			 desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+   				</div>
+   			</div>
+   			
+   			<div class="items">
+   				<button class="btn">Accordion Button</button>
+   				<div class="content">
+   					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+      			 desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+   				</div>
+   			</div>
+   			
+   		</div>
+   		
+   		<script>
+   			
+   			var btn = document.querySelectorAll(".btn");
+   			
+   			// start a loop 
+   			
+   			for(var i = 0; i < btn.length; i++){
+   				
+   				//separate click function 
+   				
+   				btn[i].addEventListener("click", function(){
+   					this.classList.toggle("active");
+   					this.nextElementSibling.classList.toggle("show");
+   				});
+   				
+   			}
+   			
+   		</script>
+   		
+   </body>
+</html>
