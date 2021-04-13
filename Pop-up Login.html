@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <title>Pop-up Login</title>
+      <style>
+      	*{
+      		margin:0;
+      		padding:0;
+      		box-sizing:border-box;
+      	}
+      	body{
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		height:100vh;
+      		/*background: hsla(340, 80%, 69%, 1);
+						background: linear-gradient(0deg, hsla(340, 80%, 69%, 1) 0%, hsla(15, 93%, 71%, 1) 100%);*/
+						background: hsla(153, 83%, 68%, 1);
+						background: linear-gradient(90deg, hsla(153, 83%, 68%, 1) -50%, hsla(169, 79%, 54%, 1) 70%);
+      	}
+      	.container{
+      		width:300px;
+      		height:500px;
+      		/*box-shadow:0 0 5px #ccc;*/
+      		position:relative;
+      	}
+      	.btn{
+      		position:absolute;
+      		top:50%;
+      		left:50%;
+      		transform:translate(-50%,-50%);
+      		padding:10px 20px;
+      		background:none;
+      		border:none;
+      		outline:none;
+      		background:#596BD1;
+      		border-radius:5px;
+      		box-shadow:/*-1px -1px 2px #F165FF,*/inset -2px -2px 5px -2px #0E0E0E;
+      		transition:0.5s;
+      		font-family:sans-serif;
+      		font-size:20px;
+      		color:#fff;
+      		text-shadow:0 0 2px #000;
+      		text-transform:capitalize;
+      	}
+      	.btn:hover{
+      		box-shadow:/*2px 2px 5px #0E0E0E,*/
+      										inset 2px 2px 5px -2px #0E0E0E;
+      	}
+      	.content{
+      		position:absolute;
+      		top:50%;
+      		left:50%;
+      		transform:translate(-50%,-50%) scale(0);
+      		width:300px;
+      		background:#0D41E1;
+      		padding:10px;
+      		border-radius:5px;
+      		/*box-shadow:0 0 5px #000;*/
+      		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      		transition:0.4s;
+      	}
+      	.content h3{
+      		text-align:center;
+      		font-family:poppins;
+      		font-size:32px;
+      		font-weight:800;
+      		text-transform:uppercase;
+      		color:#fff;
+      		margin-bottom:40px;
+      	}
+      	.cross{
+      		position:absolute;
+      		top:25px;
+      		right:10px;
+      		background:#FFFFFF;
+      		width:20px;
+      		height:2px;
+      		transform:translate(-50%, -50%) rotate(45deg);
+      	}
+      	.cross:after{
+      		content:"";
+      		position:absolute;
+      		top:1px;
+      		right:0px;
+      		background:#FFFFFF;
+      		width:20px;
+      		height:2px;
+      		transform:translate(0%, -50%) rotate(-90deg);
+      	}
+      	.cross:hover,
+      	.cross:hover:after{
+      		background:#000;
+      	}
+      	#user,
+      	#pwd{
+      		width:100%;
+      		height:40px;
+      		margin-bottom:10px;
+      		padding:10px;
+      		font-family:sans-serif;
+      		font-size:20px;
+      		border:1px solid #FFFFFF;
+      		background:none;
+      		border-radius:8px;
+      		outline:none;
+      		color:#FFFFFF;
+      	}
+      	#user::placeholder,
+      	#pwd::placeholder{
+      		color:#FFFFFF;
+      	}
+      	input[type=submit]{
+      		margin-bottom:40px;
+      		padding:10px;
+      		font-family:sans-serif;
+      		font-size:20px;
+      		border:1px solid #FFFFFF;
+      		background:none;
+      		border-radius:8px;
+      		outline:none;
+      		color:#FFFFFF;
+      		transition:0.5s;
+      	}
+      	input[type=submit]:hover{
+      		background:#FFFFFF;
+      		color:#000;
+      	}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+      	<button class="btn">Pop-up Login</button>
+      	<div class="content">
+      		<h3>Login</h3>
+      		<div class="cross"></div>
+      		<form>
+      			<input type="email" placeholder="Ex-example@gmail.com" id="user" required="required"/><br>
+      			<input type="password" placeholder="Password" id="pwd" required="required"/><br>
+      			<input type="submit" value="Log In"/>
+      		</form>
+      	</div>
+      </div>
+      
+      <script>
+      	
+      	let btn = document.querySelector(".btn");
+      	
+      	let ctn = document.querySelector(".content");
+      	
+      	btn.addEventListener("click", function(){
+      		
+      		ctn.style.transform = "translate(-50%, -50%) scale(1)";
+      		
+      		//btn.classList.toggle("act");
+      		
+      	});
+      	
+      	var cross = document.querySelector(".cross");
+      	
+      	cross.addEventListener("click", function(){
+      		ctn.style.transform = "translate(-50%, -50%) scale(0)";
+      	});
+      	
+      </script>
+      
+   </body>
+</html>
