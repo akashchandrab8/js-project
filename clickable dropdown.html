@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <title>clickable Dropdown</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+      	*{
+      		margin:0;
+      		padding:0;
+      		box-sizing:border-box;
+      	}
+      	body{
+      		height:100vh;
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		background:linear-gradient(45deg, #1a1f71, #0530ad);
+      		color:#fff;
+      	}
+      	.container{
+      		width:200px;
+      		position:relative;
+      	}
+      	.drp{
+      		position:relative;
+      		top:0;
+      		left:0;
+      		right:0;
+      		width:100%;
+      		height:50px;
+      		background:#5145e9;
+      		box-shadow:0 0 20px 5px #4b0082;
+      		font-family:sans-serif;
+      		font-size:1.5em;
+      		font-weight:650;
+      		text-transform:uppercase;
+      		letter-spacing:2px;
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		z-index:2;
+      	}
+      	.drp i{
+      		color:#fff;
+      		font-size:1.2em;
+      		margin-left:10px;
+      		transition:0.5s;
+      	}
+      	.act i{
+      		transform:rotate(180deg);
+      	}
+      	.drp-menu{
+      		position:relative;
+      		box-shadow:0 0 20px 5px #4b0082;
+      		width:100%;
+      		top:5px;
+      		left:0;
+      		right:0;
+      		height:auto;
+      		transition:0.5s;
+      		opacity:0;
+      	}
+      	.active{
+      		opacity:1;
+      	}
+      	.items{
+      		width:100%;
+      		height:35px;
+      		padding:10px 20px;
+      		font-family:poppins;
+      		font-size:15px;
+      		font-weight:400;
+      		/*text-transform:uppercase;*/
+      		margin-bottom:1px;
+      		background:#5145e9;
+      		transition:background 0.5s;
+      		position:relative;
+      	}
+      	.items:hover{
+      		background:#4135ce;
+      	}
+      	.items .search-input{
+      		position:relative;
+      	}
+      	.search-input .input{
+      		position:absolute;
+      		width:100%;
+      		height:100%;
+      		top:0;
+      		left:0;
+      		right:0;
+      		bottom:0;
+      		background:none;
+      		border:none;
+      		padding:10px 40px;
+      		font-family:poppins;
+      		font-size:15px;
+      		font-weight:400;
+      		color:#fff;
+      	}
+      	.search-input .input:focus{
+      		outline:none;
+      	}
+      	.search-input .input::placeholder{
+      		color:#fff;
+      	}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+      	<div class="drp">Dropdown
+      		<i class="fa fa-caret-down"></i>
+      	</div>
+      	<div class="drp-menu">
+      		<div class="items search-input">
+      			<i class="fa fa-search"></i>
+      			<input type="text" class="input" placeholder="Search Name">
+      		</div>
+      		<div class="items" id="item">Akash</div>
+      		<div class="items" id="item">Lipun</div>
+      		<div class="items" id="item">Manoj</div>
+      		<div class="items" id="item">Rajendra</div>
+      		<div class="items" id="item">Sachin</div>
+      	</div>
+      </div>
+      <script>
+      	let drp = document.querySelector(".drp");
+      	let drpMenu = document.querySelector(".drp-menu");
+      	
+      	drp.addEventListener("click", function(){
+      		drp.classList.toggle("act");
+      		drpMenu.classList.toggle("active");
+      	});
+      	
+      	//search filter function start
+      	
+      	let div = document.querySelectorAll("#item");
+      	
+      	let input = document.querySelector(".input");
+      	
+      	input.addEventListener("input", function(){
+      		var inputValue = input.value.toLowerCase();
+      		//start a loop 
+      		for(let i = 0; i < div.length; i++){
+      			//condition start 
+      			
+      			if(div[i].innerHTML.toLowerCase().indexOf(inputValue) > -1){
+      				div[i].style.display = "";
+      			}else{
+      				div[i].style.display = "none";
+      			}
+      		}
+      	});
+      	
+      </script>
+   </body>
+</html>
